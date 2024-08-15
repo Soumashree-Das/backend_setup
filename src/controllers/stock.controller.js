@@ -29,7 +29,7 @@ const addStock = asyncHandler(async (req, res) => {
     const stockPhoto = await uploadOnCloudinary(photoLocation)
     if(
         [Mrp,description,units,date_of_produce,growing_practices,place_of_origin,product_id,seller_name,].some( (field) => {
-        field?.trim === ""
+        field?.trim() === ""
         })
     ){
         throw new ApiError(400,"all fields are required!")
